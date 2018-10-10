@@ -2,43 +2,52 @@
 
   <div id="parentx">
 
-    <vs-button @click="active=!active" color="primary" vs-type="filled">Open Sidebar</vs-button>
-    <vs-sidebar parent="body" default-index="1"  color="primary" class="sidebarx" spacer v-model="active">
+    <vs-button @click="active=!active, notExpand = false" color="success" vs-type="filled">Open Sidebar Reduce-expand</vs-button>
+    <vs-sidebar :reduce="reduce" :reduce-not-hover-expand="notExpand" :hidden-background="true" parent="body" default-index="1"  color="success" class="sidebarx" spacer v-model="active">
 
       <div class="header-sidebar" slot="header">
         <vs-avatar  size="70px" src="https://randomuser.me/api/portraits/men/85.jpg"/>
-
-        <h4>
-          My Name
-          <vs-button color="primary" vs-icon="more_horiz" vs-type="flat"></vs-button>
-        </h4>
-
       </div>
+      <vs-sidebar-group open title="Application">
+        <vs-sidebar-item index="1" icon="menu" @click="reduce=!reduce">
+         Toggle Sidebar
+        </vs-sidebar-item>
+        <vs-sidebar-item index="5" icon="verified_user">
+          Configurations
+        </vs-sidebar-item>
+        <vs-sidebar-group title="Store">
+          <vs-sidebar-item index="2.1" icon="store">
+            Store
+          </vs-sidebar-item>
+          <vs-sidebar-item index="2.2" icon="nature_people">
+            Nature
+          </vs-sidebar-item>
+          <vs-sidebar-item index="2.3" icon="style">
+            Style
+          </vs-sidebar-item>
+        </vs-sidebar-group>
+        <vs-sidebar-item index="2" icon="gavel">
+          History
+        </vs-sidebar-item>
+        <vs-sidebar-item index="3" icon="https">
+          Security
+        </vs-sidebar-item>
+        <vs-sidebar-item index="4" icon="help">
+          Help
+        </vs-sidebar-item>
+      </vs-sidebar-group>
 
-      <vs-sidebar-item index="1" icon="question_answer">
-        Dashboard
-      </vs-sidebar-item>
-
-      <vs-sidebar-item index="2" icon="gavel">
-        History
-      </vs-sidebar-item>
 
       <vs-divider icon="person" position="left">
         User
       </vs-divider>
 
-      <vs-sidebar-item index="3" icon="verified_user">
-        Configurations
-      </vs-sidebar-item>
-      <vs-sidebar-item index="4" icon="account_box">
-        Perfile
-      </vs-sidebar-item>
-      <vs-sidebar-item index="5" >
-        Card
+
+      <vs-sidebar-item index="6" icon="account_box">
+        Profile
       </vs-sidebar-item>
 
       <div class="footer-sidebar" slot="footer">
-        <vs-button vs-icon="reply" color="danger" vs-type="flat">log out</vs-button>
         <vs-button vs-icon="settings" color="primary" vs-type="border"></vs-button>
       </div>
 
@@ -51,6 +60,8 @@
 export default {
   data:()=>({
     active:false,
+    notExpand: false,
+    reduce: true
   })
 }
 </script>

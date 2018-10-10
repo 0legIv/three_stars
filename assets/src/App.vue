@@ -4,18 +4,22 @@
             <h1>Phoenix Vue</h1>
         </header>
         <main>
-            <hello></hello>
+            <sidebar></sidebar>
+
         </main>
     </div>
 </template>
 
 <script>
     import Hello from './components/Hello'
+    import Sidebar from './components/Sidebar'
+
 
     export default {
         name: 'app',
         components: {
             Hello,
+            Sidebar
         }
     }
 </script>

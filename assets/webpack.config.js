@@ -52,6 +52,14 @@ module.exports = (env) => {
           ]
         },
         {
+          test: /\.scss$/,
+          use: [
+              "style-loader", // creates style nodes from JS strings
+              "css-loader", // translates CSS into CommonJS
+              "sass-loader" // compiles Sass to CSS, using Node Sass by default
+          ]
+        },
+        {
           test: /\.styl(us)?$/,
           use: [
             'vue-style-loader',
@@ -90,12 +98,8 @@ module.exports = (env) => {
               }
             }
           ]
-        }, {
-          test: /\.(ttf|woff2?|eot|svg)$/,
-          exclude: /node_modules/,
-          query: { name: 'fonts/[hash].[ext]' },
-          loader: 'file-loader'
-        }
+        },{ test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
+
       ]
     },
     plugins: isProd ? [
