@@ -4,8 +4,9 @@
             <h1>Phoenix Vue</h1>
         </header>
         <main>
-            <sidebar></sidebar>
-
+            <router-link to="/users">here</router-link>
+            <router-link to="/hello">hello</router-link>
+            <router-view></router-view>
         </main>
     </div>
 </template>
@@ -13,7 +14,6 @@
 <script>
     import Hello from './components/Hello'
     import Sidebar from './components/Sidebar'
-
 
     export default {
         name: 'app',
