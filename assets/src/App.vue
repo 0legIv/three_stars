@@ -1,25 +1,25 @@
 <template>
     <div id="app">
-        <header>
-            <h1>Phoenix Vue</h1>
-        </header>
-        <main>
-            <router-link to="/users">here</router-link>
-            <router-link to="/hello">hello</router-link>
-            <router-view></router-view>
-        </main>
+        <!-- 
+        <router-view></router-view> -->
+        <navbar></navbar>
+        <sidebar></sidebar>
+        <router-view></router-view>
+        <!-- <layout></layout> -->
     </div>
 </template>
 
 <script>
-    import Hello from './components/Hello'
     import Sidebar from './components/Sidebar'
+    import Navbar from './components/Navbar'
+    import Layout from './components/Layout'
 
     export default {
         name: 'app',
         components: {
-            Hello,
-            Sidebar
+            Sidebar,
+            Navbar,
+            Layout
         }
     }
 </script>
@@ -30,8 +30,5 @@
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           color: #2c3e50;
-    }
-    main {
-        margin-top: 60px;
     }
 </style>

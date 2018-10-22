@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Users from '@/components/Users.vue'
-import Hello from '@/components/Hello.vue'
+import Currency from '@/components/Currency.vue'
+import Layout from '@/components/Layout.vue'
 
 const routes = [
-    {path: '/users', component: Users},
-    {path: '/hello', component: Hello}
+    {path: '/currencies', component: Currency},
+    {path: '/layout', component: Layout}
   ]
 
 Vue.use(Router)

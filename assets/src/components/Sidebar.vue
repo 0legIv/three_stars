@@ -1,92 +1,65 @@
-<template lang="html">
+<template>
+  <v-layout
+    wrap
+  >
+    <v-navigation-drawer
+      v-model="isActive"
+      temporary
+      absolute
+    >
+      <v-list>
+      <v-list-tile>
+        <v-list-tile-action>
+          <v-icon>home</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-title>Home</v-list-tile-title>
+      </v-list-tile>
 
-  <div id="parentx">
+      <v-list-group
+        sub-group
+        no-action
+      >
+        <v-list-tile slot="activator">
+          <v-list-tile-title>Settings</v-list-tile-title>
+        </v-list-tile>
 
-    <vs-button @click="active=!active, notExpand = false" color="success" vs-type="filled">Open Sidebar Reduce-expand</vs-button>
-    <vs-sidebar :reduce="reduce" :reduce-not-hover-expand="notExpand" :hidden-background="true" parent="body" default-index="1"  color="success" class="sidebarx" spacer v-model="active">
-
-      <div class="header-sidebar" slot="header">
-        <vs-avatar  size="70px" src="https://randomuser.me/api/portraits/men/85.jpg"/>
-      </div>
-      <vs-sidebar-group open title="Application">
-        <vs-sidebar-item index="1" icon="menu" @click="reduce=!reduce">
-         Toggle Sidebar
-        </vs-sidebar-item>
-        <vs-sidebar-item index="5" icon="verified_user">
-          Configurations
-        </vs-sidebar-item>
-        <vs-sidebar-group title="Store">
-          <vs-sidebar-item index="2.1" icon="store">
-            Store
-          </vs-sidebar-item>
-          <vs-sidebar-item index="2.2" icon="nature_people">
-            Nature
-          </vs-sidebar-item>
-          <vs-sidebar-item index="2.3" icon="style">
-            Style
-          </vs-sidebar-item>
-        </vs-sidebar-group>
-        <vs-sidebar-item index="2" icon="gavel">
-          History
-        </vs-sidebar-item>
-        <vs-sidebar-item index="3" icon="https">
-          Security
-        </vs-sidebar-item>
-        <vs-sidebar-item index="4" icon="help">
-          Help
-        </vs-sidebar-item>
-      </vs-sidebar-group>
-
-
-      <vs-divider icon="person" position="left">
-        User
-      </vs-divider>
-
-
-      <vs-sidebar-item index="6" icon="account_box">
-        Profile
-      </vs-sidebar-item>
-
-      <div class="footer-sidebar" slot="footer">
-        <vs-button vs-icon="settings" color="primary" vs-type="border"></vs-button>
-      </div>
-
-    </vs-sidebar>
-  </div>
-
+          <v-list-tile
+            v-for="(setting, i) in settings"
+            :key="i"
+            :to="setting.link"
+          >
+            <v-list-tile-title v-text="setting.text"></v-list-tile-title>
+            <v-list-tile-action>
+              <v-icon v-text="setting.icon"></v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+      </v-list-group>
+    </v-list>
+    </v-navigation-drawer>
+  </v-layout>
 </template>
 
 <script>
-export default {
-  data:()=>({
-    active:false,
-    notExpand: false,
-    reduce: true
-  })
-}
+  export default {
+    data () {
+      return {
+        active: false,
+        settings: [
+            {icon: 'settings', text: 'Currency', link: '/currencies'},
+            {icon: 'settings', text: 'Users', link: '/layout'}
+          ],
+        cruds: [
+          ['Create', 'add'],
+          ['Read', 'insert_drive_file'],
+          ['Update', 'update'],
+          ['Delete', 'delete']
+        ]
+      }
+    },
+    computed: {
+      isActive() {
+        return this.$store.state.active
+      }
+    }
+  }
 </script>
-
-<style lang="stylus">
-.header-sidebar
-  display flex
-  align-items center
-  justify-content center
-  flex-direction column
-  width 100%
-  h4
-    display flex
-    align-items center
-    justify-content center
-    width 100%
-    > button
-      margin-left 10px
-.footer-sidebar
-  display flex
-  align-items center
-  justify-content space-between
-  width 100%
-  > button
-      border 0px solid rgba(0,0,0,0) !important
-      border-left 1px solid rgba(0,0,0,.07) !important
-      border-radius 0px !important
-</style>
