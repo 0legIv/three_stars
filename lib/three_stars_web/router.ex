@@ -18,9 +18,15 @@ defmodule ThreeStarsWeb.Router do
 
     get "/", PageController, :index
   end
+   
+   scope "/api", ThreeStarsWeb do
+    pipe_through :api
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ThreeStarsWeb do
-  #   pipe_through :api
-  # end
+    resources "/currencies", CurrenciesController, except: [:new, :edit]
+    resources "/cources", CourcesController, except: [:new, :edit]
+
+    #options   "/currencies", CurrenciesController, :options
+
+    #resources("/currencies", CurrenciesController)
+  end
 end
