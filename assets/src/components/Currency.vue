@@ -127,9 +127,8 @@ export default {
   { 
     updateCurrency: function () {
      this.axios.get('http://0.0.0.0:4000/api/currencies').then(function (response) {
-        var body = JSON.parse(response.body)
-        console.log(body)
-        this.items = body.data
+        
+        this.items = JSON.parse(response.data)        
       }).catch(function (error) {
             // handle error
             console.log(error);

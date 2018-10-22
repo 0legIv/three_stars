@@ -13,6 +13,12 @@
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
 
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+    xhr.setRequestHeader("x-csrf-token", "<%=Plug.CSRFProtection.get_csrf_token() %>");
+    }
+  });
+
 // Import local files
 //
 // Local files can be imported directly using relative
