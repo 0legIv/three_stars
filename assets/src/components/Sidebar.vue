@@ -47,13 +47,7 @@
         settings: [
             {icon: 'settings', text: 'Currency', link: '/currencies'},
             {icon: 'settings', text: 'Users', link: '/layout'}
-          ],
-        cruds: [
-          ['Create', 'add'],
-          ['Read', 'insert_drive_file'],
-          ['Update', 'update'],
-          ['Delete', 'delete']
-        ]
+          ]
       }
     },
     computed: {
