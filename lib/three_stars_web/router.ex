@@ -24,6 +24,8 @@ defmodule ThreeStarsWeb.Router do
 
     resources "/currencies", CurrenciesController, except: [:new, :edit]
     resources "/cources", CourcesController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit]
+
 
     #options   "/currencies", CurrenciesController, :options
 
