@@ -48,6 +48,21 @@ defmodule ThreeStars.Currency.Rate do
      IO.puts "#{k} --> #{v}"
      
      %ThreeStars.Currency.Currencies{id: id} = Currency.get_currencies_by!(k)
+
+     Currency.create_cources(%{currencies_id: id ,cource: v})
+
+    end
+
+    #%ThreeStars.Currency.Currencies{id: id} = ThreeStars.Currency.get_currencies_by! "BGN"
+  end
+
+  def update_cources_in_table() do
+    %{"rates" => rates} = ThreeStars.Currency.Rate.get_latest_rates
+
+    for  {k, v}  <-  rates  do
+     IO.puts "#{k} --> #{v}"
+     
+     %ThreeStars.Currency.Currencies{id: id} = Currency.get_currencies_by!(k)
      cource = Currency.get_cources_by_currencies_id(id)
 
      Currency.update_cources(cource, %{cource: v})

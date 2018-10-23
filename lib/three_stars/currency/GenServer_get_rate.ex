@@ -17,7 +17,7 @@ defmodule ThreeStars.Currency.Periodically do
   def handle_info(:work, state) do
     # Do the desired work here
     
-    ThreeStars.Currency.Rate.add_cources_in_table()
+    ThreeStars.Currency.Rate.update_cources_in_table()
     IO.puts "Test for add in database"
     # Reschedule once more
     schedule_work()
@@ -27,7 +27,7 @@ defmodule ThreeStars.Currency.Periodically do
 
   defp schedule_work do
     # In 2 hours
-    Process.send_after(self(), :work, 600_000)
+    Process.send_after(self(), :work, 60_000)
   end
 end
 
