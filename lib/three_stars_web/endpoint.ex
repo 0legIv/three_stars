@@ -37,6 +37,8 @@ defmodule ThreeStarsWeb.Endpoint do
     key: "_three_stars_key",
     signing_salt: "BwmpZjiU"
 
+  plug CORSPlug, origin: ["*"]
+
   plug ThreeStarsWeb.Router
 
   @doc """

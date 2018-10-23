@@ -52,7 +52,7 @@ config :phoenix, :stacktrace_depth, 20
 config :three_stars, ThreeStars.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "9874123",
+  password: "postgres",
   database: "three_stars_dev",
   hostname: "localhost",
   pool_size: 10
