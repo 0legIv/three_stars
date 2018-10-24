@@ -45,14 +45,19 @@
       return {
         active: false,
         settings: [
-            {icon: 'settings', text: 'Currency', link: '/currencies'},
-            {icon: 'settings', text: 'Users', link: '/layout'}
+            {
+              icon: 'settings', 
+              text: 'Currencies', 
+              link: '/currencies'  
+            },
+            {icon: 'settings', text: 'Users', link: '/layout'},
+            {icon: 'settings', text: 'Dialog', link: '/dialog'}
           ]
       }
     },
     computed: {
       isActive() {
-        return this.$store.state.active
+        return this.$store.getters.getSidebarState
       }
     }
   }

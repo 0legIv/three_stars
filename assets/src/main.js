@@ -22,13 +22,45 @@ Vue.use(VueAxios, axios)
 
 const store = new Vuex.Store({
   state: {
-    active: false
+    active_sidebar: false,
+    active_dialog: false,
+    currency_data: []
   },
-  mutations: {
-    change_state (state) {
-      state.active = !state.active;
+  getters: {
+    getSidebarState: state => {
+      return state.active_sidebar
+    },
+    getDialogState: state => {
+      return state.active_dialog
+    },
+    getCurrencyData: state => {
+      return state.currency_data
     }
   },
+  mutations: {
+    change_sidebar_state (state) {
+      state.active_sidebar = !state.active_sidebar;
+    },
+    change_dialog_state (state) {
+      state.active_dialog = !state.active_dialog;
+    },
+    change_currency_data (state, data) {
+      state.currency_data = data
+    }
+  },
+  actions: 
+  {
+    update_currency_data (context)
+      {
+        Vue.axios.get('http://0.0.0.0:4000/api/currencies').then((response) => {
+          context.commit('change_currency_data', response.data.data)       
+        }).catch(function (error) {
+              console.log(error);
+        })
+          .then(function () {
+        });  
+      }
+  }
 })
 
 

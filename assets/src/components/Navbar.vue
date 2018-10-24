@@ -14,7 +14,7 @@
 export default {
     methods: { 
         changeState: function () {
-            this.$store.commit('change_state')
+            this.$store.commit('change_sidebar_state')
         }
     }
 }
